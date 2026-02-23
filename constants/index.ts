@@ -1,4 +1,3 @@
-
 export const SidebarData = [
     {
         title: "Overview",
@@ -25,4 +24,11 @@ export const SidebarData = [
         title: "Settings",
         link: "/settings",
     }
+]
+
+// constants.ts
+export const cards = [
+  { title: 'Total Views', value: '1.2K', iconName: 'Eye' },
+  { title: 'Total Users', value: '500', iconName: 'User' },
+  { title: 'Total Stars', value: '3.5K', iconName: 'Star' },
 ]

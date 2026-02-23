@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { SidebarData } from "../../constants";
 import Link from "next/link";
 import { X, Menu } from "lucide-react";
+import Image from "next/image";
 
 const Sidebar = ({ className }: { className?: string }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -29,7 +30,7 @@ const Sidebar = ({ className }: { className?: string }) => {
       {/* Sidebar */}
       <div
         className={`
-          fixed top-0 left-0 h-full w-64 bg-none text-white shadow-lg z-50
+          fixed top-0 left-0 h-full w-64 bg-none text-white shadow-lg border border-white/80 z-50
           transform transition-transform duration-300
           ${isOpen ? "translate-x-0" : "-translate-x-full"}
           md:translate-x-0 md:static md:w-64
@@ -37,11 +38,15 @@ const Sidebar = ({ className }: { className?: string }) => {
         `}
       >
         {/* Close button for small screens */}
-        <div className="flex justify-between items-center p-4 md:hidden">
-          <h1 className="text-xl font-bold">Sidebar</h1>
+        <div className="flex justify-between items-center p-4 border-b md:hidden">
+          <Image src="/arlogo.png" width={40} height={40} alt="Logo" />
           <button onClick={() => setIsOpen(false)}>
             <X size={24} />
           </button>
+        </div>
+
+        <div className="hidden md:block p-3 border border-white/80">
+          <Image src="/arlogo.png" width={40} height={40} alt="Logo" />
         </div>
 
         {/* Sidebar links */}

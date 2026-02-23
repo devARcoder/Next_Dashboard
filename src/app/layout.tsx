@@ -23,10 +23,10 @@ export default function RootLayout({
           {/* Main content area */}
           <div className="flex flex-col flex-1">
             {/* Header */}
-            <Header className="w-full text-white h-16 shadow-md sticky top-0 bg-none z-10" />
+            <Header className="w-full text-white shadow-md sticky top-0 bg-none z-10" />
 
             {/* Content */}
-            <main className="flex-1 p-6 mt-0">
+            <main className="flex-1 p-10 mt-0">
               {children}
             </main>
           </div>
