@@ -1,7 +1,8 @@
+import OverviewPage from "./dashboard/page"
 export default function Home(){
   return (
-    <div>
-      home
-    </div>
+    <>
+      <OverviewPage />
+    </>
   )
 }

@@ -1,11 +1,7 @@
-import React from 'react'
-
-const page = () => {
+export default function OverviewPage(){
   return (
     <div>
-      <h1 className="text-2xl font-bold">Profile Page</h1>
+      OverviewPage
     </div>
   )
 }
-
-export default page

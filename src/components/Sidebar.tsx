@@ -1,66 +1,81 @@
 "use client";
 
-import React, { useState } from "react";
-import { SidebarData } from "../../constants";
 import Link from "next/link";
-import { X, Menu } from "lucide-react";
-import Image from "next/image";
+import { X } from "lucide-react";
+import { SidebarData } from "../../constants";
+import { usePathname } from "next/navigation";
 
-const Sidebar = ({ className }: { className?: string }) => {
-  const [isOpen, setIsOpen] = useState(false);
+const Sidebar = ({
+  isOpen,
+  setIsOpen,
+}: {
+  isOpen: boolean;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
+  const pathname = usePathname();
 
   return (
     <>
-      {/* Menu button for small screens */}
-      <button
-        className="md:hidden fixed text-white top-4 right-4 z-50 p-2 rounded "
-        onClick={() => setIsOpen(true)}
-      >
-        <Menu size={24} />
-      </button>
-
       {/* Overlay */}
       <div
-        className={`fixed inset-0 bg-black/50 backdrop-blur-sm z-40 transition-opacity duration-300 md:hidden ${
-          isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        className={`fixed inset-0 bg-black/50 z-40 md:hidden transition-opacity ${
+          isOpen
+            ? "opacity-100 pointer-events-auto"
+            : "opacity-0 pointer-events-none"
         }`}
         onClick={() => setIsOpen(false)}
-      ></div>
+      />
 
       {/* Sidebar */}
       <div
         className={`
-          fixed top-0 left-0 h-full w-64 bg-none text-white shadow-lg border border-white/80 z-50
+          fixed top-0 left-0 h-screen w-64 bg-[#18172b] text-white z-50
           transform transition-transform duration-300
           ${isOpen ? "translate-x-0" : "-translate-x-full"}
-          md:translate-x-0 md:static md:w-64
-          ${className || ""}
+          md:translate-x-0 md:static
         `}
       >
-        {/* Close button for small screens */}
-        <div className="flex justify-between items-center p-4 border-b md:hidden">
-          <Image src="/arlogo.png" width={40} height={40} alt="Logo" />
+        {/* Mobile Header */}
+        <div className="flex justify-between items-center p-4 border-b border-white/10 md:hidden">
+          <h1 className="text-lg font-bold tracking-wide">ARD</h1>
           <button onClick={() => setIsOpen(false)}>
-            <X size={24} />
+            <X className="text-[#94A3B8]" size={24} />
           </button>
         </div>
 
-        <div className="hidden md:block p-3 border border-white/80">
-          <Image src="/arlogo.png" width={40} height={40} alt="Logo" />
+        {/* Desktop Logo */}
+        <div className="hidden md:block p-4 border-b border-white/10">
+          <h1 className="text-lg font-bold tracking-wide">ARD</h1>
         </div>
 
-        {/* Sidebar links */}
-        <div className="flex flex-col gap-4 p-4 mt-0 md:mt-4">
-          {SidebarData.map((item, index) => (
-            <Link
-              key={index}
-              href={item.link}
-              className="text-white hover:text-white/80"
-              onClick={() => setIsOpen(false)} // <-- Close sidebar when link clicked
-            >
-              {item.title}
-            </Link>
-          ))}
+        {/* Links */}
+        <div className="flex flex-col gap-2 p-4">
+          {SidebarData.map((item, index) => {
+            const isActive = pathname === item.link;
+
+            return (
+              <Link
+                key={index}
+                href={item.link}
+                onClick={() => setIsOpen(false)}
+                className={`
+                  relative px-4 py-2 rounded-lg transition-all duration-200 group
+                  ${
+                    isActive
+                      ? "bg-[#1E293B] text-white shadow-md"
+                      : "text-gray-300 hover:bg-white/5 hover:text-white"
+                  }
+                `}
+              >
+                {/* Left Active Indicator */}
+                {isActive && (
+                  <span className="absolute left-0 top-0 h-full w-1 bg-[#94A3B8] rounded-r-md" />
+                )}
+
+                <span className="relative z-10">{item.title}</span>
+              </Link>
+            );
+          })}
         </div>
       </div>
     </>
