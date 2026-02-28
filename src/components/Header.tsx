@@ -1,6 +1,7 @@
 "use client";
 
 import { Bell, Search, Menu, User } from "lucide-react";
+import SearchBar from "./shared/SearchBar";
 
 const Header = ({
   setIsOpen,
@@ -18,7 +19,9 @@ const Header = ({
         <Menu className="text-[#94A3B8]" size={24} />
       </button>
 
-      <h1 className="hidden md:block text-[#ffffff]">Dashboard</h1>
+      <div className="hidden md:block text-[#ffffff]">
+        <SearchBar />
+      </div>
 
       <div className="flex items-center gap-4">
         <Search className="text-[#94A3B8]" />

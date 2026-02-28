@@ -1,4 +1,7 @@
+"use client"
 import Card from "@/components/dashboard/Card";
+import Productivity from "@/components/dashboard/Productivity";
+import RecentTasks from "@/components/dashboard/RecentTasks";
 import Heading from "@/components/shared/Heading";
 import { Box, CalendarClock, CircleCheck, Zap } from "lucide-react";
 
@@ -54,6 +57,20 @@ export default function DashboardPage(){
         ))}
         
       </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+  {/* Chart - 70% */}
+  <div className="lg:col-span-8">
+    <Productivity />
+  </div>
+
+  {/* Recent Tasks - 30% */}
+  <div className="lg:col-span-4">
+    <RecentTasks />
+  </div>
+
+</div>
     </div>
   )
 }
