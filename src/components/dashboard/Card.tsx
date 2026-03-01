@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react'
+import React,  {ReactNode } from "react";
 
 const Card = ({ className, icon, percent, name, number, colorName}: {className: string, icon: ReactNode, percent: string, name: string, number: number, colorName: string}) => {
   return (
@@ -8,10 +8,10 @@ const Card = ({ className, icon, percent, name, number, colorName}: {className: 
         <div className={`${className || ""} p-1 rounded-full`}>
         {icon}
         </div>
-        <h1 className={`${colorName || ""} border px-2 rounded-md`}>{percent}%</h1>
+        <h1 className={`bg-green-950 text-green-500 font-semibold px-2 rounded-md`}>Latest</h1>
       </div>
       <div className="flex flex-col space-y-1">
-        <h1 className='text-[#94A3B8]'>{name}</h1>
+        <h1 className='text-[#94A3B8] line-clamp-2'>{name}</h1>
         <p className='text-2xl font-semibold'>{number}</p>
       </div>
     </div>

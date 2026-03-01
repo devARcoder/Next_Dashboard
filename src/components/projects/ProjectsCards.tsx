@@ -4,12 +4,12 @@ import { PenBox } from "lucide-react";
 import React, { useEffect, useState } from "react";
 
 type Repo = {
-  id: number;
   name: string;
   description: string | null;
   html_url: string;
   language: string | null;
-  created_at: string;
+  createdAt: string;
+  commits: number;
 };
 
 // Map languages to colors (customize as needed)
@@ -27,21 +27,26 @@ const ProjectsCards = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("https://api.github.com/users/devARcoder/repos")
-      .then((res) => res.json())
-      .then((data) => {
+    const fetchRepos = async () => {
+      try {
+        const res = await fetch("/api/github");
+        const data = await res.json();
+
         // Sort newest first
         const sorted = data.sort(
           (a: Repo, b: Repo) =>
-            new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
         );
+
         setRepos(sorted);
         setLoading(false);
-      })
-      .catch((err) => {
+      } catch (err) {
         console.error("Error fetching repos:", err);
         setLoading(false);
-      });
+      }
+    };
+
+    fetchRepos();
   }, []);
 
   if (loading) return <p className="text-white">Loading projects...</p>;
@@ -51,19 +56,19 @@ const ProjectsCards = () => {
       {repos.map((repo, index) => {
         const language = repo.language || "Unknown";
         const colorClass = languageColors[language] || languageColors["Unknown"];
-        const createdDate = new Date(repo.created_at).toLocaleDateString();
+        const createdDate = new Date(repo.createdAt).toLocaleDateString();
 
-        // Generate one random progress per repo
-        const progress = Math.floor(Math.random() * 100);
+        // Optional: Use commits to generate progress (or a fixed value)
+        const progress = Math.min(repo.commits, 100); // max 100%
 
         return (
           <div
-            key={repo.id}
+            key={repo.name}
             className="border border-[#0F172A] p-5 rounded-2xl bg-[#0F172A] hover:scale-[1.02] transition-transform relative"
           >
             {/* NEW badge for the first repo */}
             {index === 0 && (
-              <span className="absolute top-2 right-2 px-2 py-1 bg-red-500 text-xs font-bold rounded-full uppercase">
+              <span className="absolute top-7 right-40 px-2 py-0.5 bg-red-500 text-xs font-semibold rounded-full uppercase">
                 NEW
               </span>
             )}
@@ -76,9 +81,7 @@ const ProjectsCards = () => {
                 {language}
               </h1>
               <div className="p-2 rounded-xl">
-                <span>
-                  <PenBox className="w-5 h-5" />
-                </span>
+                <PenBox className="w-5 h-5" />
               </div>
             </div>
 
@@ -91,7 +94,7 @@ const ProjectsCards = () => {
                 {repo.description || "No description provided."}
               </p>
               <p className="text-[#94A3B8] text-xs mt-2">
-                Created on: {createdDate}
+                Created on: {createdDate} | Commits: {repo.commits}
               </p>
             </div>
 
