@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 
-const Card = ({ className, icon, percent, name, number, colorName}: {className: string, icon: string, percent: string, name: string, number: number, colorName: string}) => {
+const Card = ({ className, icon, percent, name, number, colorName}: {className: string, icon: ReactNode, percent: string, name: string, number: number, colorName: string}) => {
   return (
     <>
     <div className='border border-[#1d2842] bg-[#0F172A] rounded-xl p-4 md:p-6 space-y-4 h-40'>

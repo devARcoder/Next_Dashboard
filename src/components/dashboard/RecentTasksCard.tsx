@@ -46,7 +46,7 @@ const RecentTasksCard = ({
       {/* Task Content */}
       <div>
         <h1
-          className={`text-lg font-semibold transition-all duration-200
+          className={`text-lg line-clamp-1 font-semibold transition-all duration-200
           ${isCompleted ? "line-through text-gray-400" : "text-white"}`}
         >
           {title}

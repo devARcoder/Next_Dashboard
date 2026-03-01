@@ -12,7 +12,7 @@ const SearchBar = () => {
       {/* Input Field */}
       <input
         type="text"
-        placeholder="Search tasks, projects..."
+        placeholder="Search tasks, projects, notes..."
         className="w-full text-[#94A3B8] pl-10 pr-4 py-2 border border-[#94A3B8] rounded-lg focus:outline-none text-sm"
       />
     </div>

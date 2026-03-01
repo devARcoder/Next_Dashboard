@@ -6,7 +6,7 @@ import {
   CartesianGrid,
   Tooltip,
   XAxis,
-  YAxis,
+  // YAxis,
   ResponsiveContainer
 } from "recharts"
 
@@ -15,7 +15,7 @@ const data = [
   { name: "Mon", uv: 4000 },
   { name: "Tue", uv: 3000 },
   { name: "Wed", uv: 2000 },
-  { name: "Thu", uv: 2780 },
+  { name: "Thu", uv: 2980 },
   { name: "Fri", uv: 1890 },
   { name: "Sat", uv: 2390 },
   { name: "Sun", uv: 3490 },
@@ -39,7 +39,7 @@ const Chart = () => {
 
           {/* Axes */}
           <XAxis dataKey="name" stroke="#94A3B8" />
-          <YAxis stroke="#94A3B8" />
+          {/* <YAxis stroke="#94A3B8" /> */}
 
           {/* Tooltip (Hover Popup) */}
           <Tooltip
@@ -58,7 +58,7 @@ const Chart = () => {
             dataKey="uv"
             stroke="#7C5CFF"
             fill="url(#colorUv)"
-            strokeWidth={3}
+            strokeWidth={2}
             activeDot={{ r: 6 }}
           />
 
