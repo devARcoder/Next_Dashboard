@@ -1,12 +1,12 @@
 "use client"
-import Card from "@/components/dashboard/Card";
+// import Card from "@/components/dashboard/Card";
 import DashboardCards from "@/components/dashboard/DashboardCards";
-import LanguagePieChart from "@/components/dashboard/LanguagePieChart";
+// import LanguagePieChart from "@/components/dashboard/LanguagePieChart";
 import Productivity from "@/components/dashboard/Productivity";
 import ProjectsCard from "@/components/dashboard/ProjectsCard";
 import RecentTasks from "@/components/dashboard/RecentTasks";
 import Heading from "@/components/shared/Heading";
-import { Box, Boxes, CalendarClock, CircleCheck, Megaphone, Palette, Zap } from "lucide-react";
+import { Boxes, Megaphone, Palette} from "lucide-react"; //  CalendarClock, CircleCheck, Box, Zap 
 import Link from "next/link";
 
 // const dashboardCardData = [
@@ -128,10 +128,10 @@ export default function DashboardPage(){
   </div>
 </div>
 
-<div className="my-6">
+{/* <div className="my-6">
 
 <LanguagePieChart />
-</div>
+</div> */}
     </div>
   )
 }

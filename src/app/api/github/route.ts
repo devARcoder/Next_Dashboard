@@ -10,11 +10,16 @@ export async function GET() {
         headers: {
           Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
         },
+        
         next: { revalidate: 3600 },
       }
+      
     );
+    
 
     const repos = await repoRes.json();
+
+    
 
     if (!Array.isArray(repos)) {
       return NextResponse.json([], { status: 200 });
