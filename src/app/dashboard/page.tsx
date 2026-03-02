@@ -4,6 +4,8 @@ import DashboardCards from "@/components/dashboard/DashboardCards";
 // import LanguagePieChart from "@/components/dashboard/LanguagePieChart";
 import Productivity from "@/components/dashboard/Productivity";
 import ProjectsCard from "@/components/dashboard/ProjectsCard";
+import RecentCommits from "@/components/dashboard/RecentCommits";
+import RecentProjects from "@/components/dashboard/RecentProjects";
 import RecentTasks from "@/components/dashboard/RecentTasks";
 import Heading from "@/components/shared/Heading";
 import { Boxes, Megaphone, Palette} from "lucide-react"; //  CalendarClock, CircleCheck, Box, Zap 
@@ -108,7 +110,8 @@ export default function DashboardPage(){
 
   {/* Recent Tasks - 30% */}
   <div className="lg:col-span-4">
-    <RecentTasks />
+    {/* <RecentTasks /> */}
+    <RecentCommits />
   </div>
 
 </div>
@@ -118,14 +121,15 @@ export default function DashboardPage(){
     <h1 className="text-2xl text-[#FFFFFF] font-semibold">Recent Projects</h1>
     <Link href="/projects" className='text-[#6366F1]'>View All Projects</Link>
   </div>
-  <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+  {/* <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
 
   {projectsCardData.map((projectsData) => (
     <div key={projectsData.id}>
        <ProjectsCard icon={projectsData.icon} stateHeading={projectsData.stateHeading} title={projectsData.title} desc={projectsData.desc} progressPercent={projectsData.progressPercent} textColor={projectsData.textColor} iconColor={projectsData.iconColor} iconBgColor={projectsData.iconBgColor} />
     </div>
   ))}
-  </div>
+  </div> */}
+  <RecentProjects />
 </div>
 
 {/* <div className="my-6">
