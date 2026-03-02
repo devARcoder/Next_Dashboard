@@ -7,9 +7,9 @@ export default function RecentCommitsSkeleton() {
       {[1, 2, 3].map((item) => (
         <div
           key={item}
-          className="flex justify-between items-center gap-4 
+          className={`flex justify-between items-center gap-4 
           bg-gradient-to from-[#1E293B] to-[#0F172A]
-          p-5 rounded-2xl border border-[#1E293B]"
+          p-5 rounded-2xl border border-[#1E293B]`}
         >
           <div className="flex items-start gap-4 w-full">
 

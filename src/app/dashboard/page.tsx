@@ -3,12 +3,12 @@
 import DashboardCards from "@/components/dashboard/DashboardCards";
 // import LanguagePieChart from "@/components/dashboard/LanguagePieChart";
 import Productivity from "@/components/dashboard/Productivity";
-import ProjectsCard from "@/components/dashboard/ProjectsCard";
+// import ProjectsCard from "@/components/dashboard/ProjectsCard";
 import RecentCommits from "@/components/dashboard/RecentCommits";
 import RecentProjects from "@/components/dashboard/RecentProjects";
-import RecentTasks from "@/components/dashboard/RecentTasks";
+// import RecentTasks from "@/components/dashboard/RecentTasks";
 import Heading from "@/components/shared/Heading";
-import { Boxes, Megaphone, Palette} from "lucide-react"; //  CalendarClock, CircleCheck, Box, Zap 
+// import { Boxes, Megaphone, Palette} from "lucide-react"; //  CalendarClock, CircleCheck, Box, Zap 
 import Link from "next/link";
 
 // const dashboardCardData = [
@@ -50,42 +50,42 @@ import Link from "next/link";
 //   },
 // ]
 
-const projectsCardData = [
-  {
-    id: 1,
-    icon: <Boxes />,
-    stateHeading: "on track",
-    title: "Mobile App API",
-    desc: "Backend developement and integration.",
-    progressPercent: "75%",
-    textColor: "bg-green-950 text-[#22C55E]",
-    iconColor: "text-[#6366F1]",
-    iconBgColor: "bg-blue-950"
-  },
-  {
-    id: 2,
-    icon: <Palette />,
-    stateHeading: "delayed",
-    title: "UI/UX Redesign",
-    desc: "Redesigning the core user experience.",
-    progressPercent: "32%",
-    textColor: "bg-orange-950 text-[#F97316]",
-    iconColor: "text-[#A855F7]",
-    iconBgColor: "bg-purple-950"
-  },
-  {
-    id: 3,
-    icon: <Megaphone />,
-    stateHeading: "planning",
-    title: "Marketing Launch",
-    desc: "Preparation for Q3 product launch.",
-    progressPercent: "12%",
-    textColor: "bg-sky-950 text-[#3B82F6]",
-    iconColor: "text-[#06B6D4]",
-    iconBgColor: "bg-sky-900"
-  },
+// const projectsCardData = [
+//   {
+//     id: 1,
+//     icon: <Boxes />,
+//     stateHeading: "on track",
+//     title: "Mobile App API",
+//     desc: "Backend developement and integration.",
+//     progressPercent: "75%",
+//     textColor: "bg-green-950 text-[#22C55E]",
+//     iconColor: "text-[#6366F1]",
+//     iconBgColor: "bg-blue-950"
+//   },
+//   {
+//     id: 2,
+//     icon: <Palette />,
+//     stateHeading: "delayed",
+//     title: "UI/UX Redesign",
+//     desc: "Redesigning the core user experience.",
+//     progressPercent: "32%",
+//     textColor: "bg-orange-950 text-[#F97316]",
+//     iconColor: "text-[#A855F7]",
+//     iconBgColor: "bg-purple-950"
+//   },
+//   {
+//     id: 3,
+//     icon: <Megaphone />,
+//     stateHeading: "planning",
+//     title: "Marketing Launch",
+//     desc: "Preparation for Q3 product launch.",
+//     progressPercent: "12%",
+//     textColor: "bg-sky-950 text-[#3B82F6]",
+//     iconColor: "text-[#06B6D4]",
+//     iconBgColor: "bg-sky-900"
+//   },
 
-]
+// ]
 
 export default function DashboardPage(){
   return (

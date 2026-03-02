@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import RecentTasksCard from "./RecentTasksCard";
-import { GitCommit, Github, PlusSquare } from "lucide-react";
+import { Github} from "lucide-react";
 import RecentCommitsSkeleton from "./RecentCommitsSkeleton";
 
 interface Commit {
@@ -34,7 +34,10 @@ export default function RecentCommits() {
 
   if (loading) {
     return (
+        <div className="">
+
       <RecentCommitsSkeleton />
+        </div>
     );
   }
 

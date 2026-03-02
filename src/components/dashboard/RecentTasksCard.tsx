@@ -18,11 +18,11 @@ const RecentTasksCard = ({
   const [isCompleted, setIsCompleted] = useState(false)
 
   return (
-    <div className="group flex justify-between items-center gap-4 
-      bg-gradient-to-br from-[#1E293B] to-[#0F172A] 
+    <div className={`group flex justify-between items-center gap-4 
+      bg-gradient-to from-[#1E293B] to-[#0F172A] 
       hover:from-[#1E293B]/80 hover:to-[#0F172A]/80
       p-5 rounded-2xl my-4 transition-all duration-300 
-      border border-[#1E293B] hover:border-[#334155]">
+      border border-[#1E293B] hover:border-[#334155]`}>
 
       {/* Left Section */}
       <div className="flex items-start gap-4">

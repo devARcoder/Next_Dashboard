@@ -49,6 +49,7 @@ export async function GET() {
 
         return {
           name: repo.name,
+          description: repo.description,
           commits: commitCount,
           language: repo.language,
           createdAt: repo.created_at,
