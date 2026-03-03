@@ -90,7 +90,7 @@ import Link from "next/link";
 export default function DashboardPage(){
   return (
     <div>
-      <Heading />
+      <Heading title="Welcome Back, Razzaq!" para="Ready Crush your goal and you have pending task." />
       {/* <div className="grid grid-cols-2 lg:grid-cols-4 gap-9  py-9">
         {dashboardCardData.map((cardData) => (
           <div key={cardData.id}>
@@ -118,8 +118,8 @@ export default function DashboardPage(){
 
 <div className="">
   <div className="flex justify-between items-center py-8">
-    <h1 className="text-2xl text-[#FFFFFF] font-semibold">Recent Projects</h1>
-    <Link href="/projects" className='text-[#6366F1]'>View All Projects</Link>
+    <h1 className="text-xl text-[#FFFFFF] font-semibold">Recent Projects</h1>
+    <Link href="/projects" className='text-[#6366F1] text-sm'>View All Projects</Link>
   </div>
   {/* <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
 

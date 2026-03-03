@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import RecentTasksCard from "./RecentTasksCard";
-import { Github} from "lucide-react";
+import { Github } from "lucide-react";
 import RecentCommitsSkeleton from "./RecentCommitsSkeleton";
 
 interface Commit {
@@ -15,6 +15,11 @@ interface Commit {
 export default function RecentCommits() {
   const [commits, setCommits] = useState<Commit[]>([]);
   const [loading, setLoading] = useState(true);
+  const [mounted, setMounted] = useState(false); // Hydration safe
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const fetchCommits = async () => {
@@ -24,6 +29,7 @@ export default function RecentCommits() {
         setCommits(Array.isArray(data) ? data : []);
       } catch (error) {
         console.error("Failed to fetch commits", error);
+        setCommits([]);
       } finally {
         setLoading(false);
       }
@@ -32,12 +38,30 @@ export default function RecentCommits() {
     fetchCommits();
   }, []);
 
-  if (loading) {
-    return (
-        <div className="">
+  // Format ISO date string to readable
+  const formatCommitTime = (dateString: string) => {
+    const date = new Date(dateString);
+    return date.toLocaleString(undefined, {
+      
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+  };
 
-      <RecentCommitsSkeleton />
-        </div>
+  const formatCommitDate = (dateString: string) => {
+    const date = new Date(dateString);
+    return date.toLocaleString(undefined, {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    });
+  };
+
+  if (!mounted || loading) {
+    return (
+      <div>
+        <RecentCommitsSkeleton />
+      </div>
     );
   }
 
@@ -51,16 +75,21 @@ export default function RecentCommits() {
 
   return (
     <div className="border border-[#0F172A] p-5 rounded-xl bg-[#0F172A]">
-        <div className="heading flex justify-between items-center pb-3">
-        <h1 className='text-2xl text-[#FFFFFF] font-semibold'>Recent Commits</h1>
-        <Github className='text-[#5048E5]' />
+      {/* Header */}
+      <div className="flex justify-between items-center pb-3">
+        <h1 className="text-2xl text-white font-semibold">Recent Commits</h1>
+        <Github className="text-[#5048E5]" />
       </div>
+
+      {/* Commit List */}
       {commits.map((commit) => (
         <RecentTasksCard
           key={commit.id}
-          title={`${commit.message}`}
+          title={commit.message}
           stateTitle={commit.repoName}
           stateColor="bg-indigo-500/10 text-indigo-400"
+          time={formatCommitTime(commit.date)} // Pass formatted commit time
+          date={formatCommitDate(commit.date)}
         />
       ))}
     </div>

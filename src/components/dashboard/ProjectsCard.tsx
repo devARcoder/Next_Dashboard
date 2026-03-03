@@ -48,7 +48,7 @@ const ProjectsCard = ({
 
       {/* Title & Description */}
       <div className="py-4">
-        <h1 className="text-white text-2xl line-clamp-1 font-semibold">{title}</h1>
+        <h1 className="text-white text-2xl md:text-xl line-clamp-1 font-semibold">{title}</h1>
         <p className="text-[#94A3B8]">{desc}</p>
       </div>
 

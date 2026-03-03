@@ -49,7 +49,7 @@ export default function RecentProjects() {
   }
 
   return (
-    <div className="grid md:grid-cols-3 gap-6">
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
       {repos.map((repo) => {
         // ✅ Safe commit count
         const commitCount = Number(repo.commitCount) || 0;
