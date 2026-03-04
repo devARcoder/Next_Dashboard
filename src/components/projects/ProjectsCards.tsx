@@ -65,6 +65,21 @@ const ProjectsCards = () => {
 
           const progress = Math.min(repo.commits, 100);
 
+           const commitCount = Number(repo.commits) || 0;
+
+        // 🎯 5 commits = 10%
+        let progressValue = Math.floor((commitCount / 5) * 10);
+
+        // ✅ Prevent NaN or negative
+        if (!Number.isFinite(progressValue) || progressValue < 0) {
+          progressValue = 0;
+        }
+
+        // ✅ Cap at 100%
+        progressValue = Math.min(progressValue, 100);
+
+        const isCompleted = progressValue === 100;
+
           return (
             <div
               key={repo.name}
@@ -98,23 +113,32 @@ const ProjectsCards = () => {
               </div>
 
               {/* Progress */}
-              <div className="mt-5">
-                <div className="flex justify-between items-center mb-1">
-                  <span className="text-[#94A3B8] text-sm">
-                    Progress
-                  </span>
-                  <span className="text-white font-semibold text-sm">
-                    {progress}%
-                  </span>
-                </div>
+<div className="mt-5">
+  <div className="flex justify-between items-center mb-1">
+    <span className="text-[#94A3B8] text-sm">
+      Progress
+    </span>
 
-                <div className="h-3 rounded-full bg-black/20">
-                  <div
-                    className="h-3 bg-blue-700 rounded-full transition-all duration-700"
-                    style={{ width: `${progress}%` }}
-                  />
-                </div>
-              </div>
+    {isCompleted ? (
+      <span className="text-green-500 font-semibold text-sm">
+        Completed
+      </span>
+    ) : (
+      <span className="text-white font-semibold text-sm">
+        {progressValue}%
+      </span>
+    )}
+  </div>
+
+  <div className="h-3 rounded-full bg-black/20">
+    <div
+      className={`h-3 rounded-full transition-all duration-700 ${
+        isCompleted ? "bg-green-500" : "bg-blue-700"
+      }`}
+      style={{ width: `${progressValue}%` }}
+    />
+  </div>
+</div>
             </div>
           );
         })}
